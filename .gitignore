@@ -1,0 +1,5 @@
+.venv
+__pycache__
+*.pyc
+.env
+vitaldrop_v2.db

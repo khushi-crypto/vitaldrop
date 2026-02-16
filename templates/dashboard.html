@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VitalDrop | Dashboard</title>
+
+  <!-- cache refresh for css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=6">
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">
+    <div class="logo">VD</div>
+    <div>
+      <div class="name">VitalDrop</div>
+      <div class="tag">Donor Dashboard</div>
+    </div>
+  </div>
+
+  <nav class="links">
+    <a href="/">Home</a>
+    <a href="/register">Register</a>
+    <a class="active" href="/dashboard">Dashboard</a>
+
+    <!-- NEW: Nearby Camps link -->
+    <a href="/nearby-camps">Nearby Camps</a>
+  </nav>
+
+  <a class="btn ghost" href="/">Back</a>
+</header>
+
+<section class="section">
+  <div class="table-card">
+
+    <!-- NEW: Emergency quick action -->
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+      <div>
+        <h2>Registered Donors</h2>
+        <p class="muted-text">Latest registrations appear on top.</p>
+      </div>
+
+      <a href="/nearby-camps" class="btn primary">
+        🚑 Find Nearby Blood Camps
+      </a>
+    </div>
+
+    <!-- Flash message -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p class="muted-text" style="margin-top:10px;">{{ messages[0] }}</p>
+      {% endif %}
+    {% endwith %}
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Blood</th>
+            <th>Recency</th>
+            <th>Frequency</th>
+            <th>Prediction</th>
+            <th>Action</th>
+            <th>Registered Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for d in donors %}
+          {% set donated = (d[8] | int) %}
+
+          <tr class="{% if donated == 1 %}row-done{% endif %}">
+            <td>{{ d[0] }}</td>
+            <td>{{ d[1] }}</td>
+            <td>{{ d[4] }}</td>
+            <td>{{ d[5] }} months</td>
+            <td>{{ d[6] }}/year</td>
+            <td><span class="pill2">{{ d[7] }}</span></td>
+
+            <td>
+              {% if donated == 0 %}
+                <form method="POST" action="{{ url_for('mark_donated', donor_id=d[0]) }}">
+                  <button class="btn small primary" type="submit">
+                    Mark as Donated
+                  </button>
+                </form>
+              {% else %}
+                <span class="pill-done">Donated ✅</span>
+              {% endif %}
+            </td>
+
+            <td>{{ d[10] }}</td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

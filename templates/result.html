@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VitalDrop | Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="brand">
+      <div class="logo">VD</div>
+      <div>
+        <div class="name">VitalDrop</div>
+        <div class="tag">Prediction Result</div>
+      </div>
+    </div>
+    <a class="btn ghost" href="/register">Back</a>
+  </header>
+
+  <section class="section">
+    <div class="result-card">
+      <div class="result-badge">Prediction</div>
+      <h2>{{ prediction }}</h2>
+
+      <!-- ML Confidence -->
+      {% if prob is not none %}
+        <p class="muted-text" style="margin-top:6px;">
+          ML Confidence: <b>{{ prob }}%</b>
+        </p>
+      {% endif %}
+
+      <p class="muted-text" style="margin-top:10px;">
+        Donor: <b>{{ name }}</b> ({{ blood_group }}) <br>
+        Recency: <b>{{ recency }}</b> months •
+        Frequency: <b>{{ frequency }}</b> times •
+        Monetary: <b>{{ monetary if monetary is defined else "—" }}</b> cc •
+        Time: <b>{{ time if time is defined else "—" }}</b> months
+      </p>
+
+      <div class="hero-actions" style="margin-top:14px;">
+        <a class="btn primary" href="/">Go Home</a>
+        <a class="btn ghost" href="/register">New Prediction</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

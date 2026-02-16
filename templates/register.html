@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VitalDrop | Register</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=5">
+</head>
+<body>
+
+  <header class="nav">
+    <div class="brand">
+      <div class="logo">VD</div>
+      <div>
+        <div class="name">VitalDrop</div>
+        <div class="tag">Donor Registration</div>
+      </div>
+    </div>
+
+    <nav class="links">
+      <a href="/">Home</a>
+      <a class="active" href="/register">Register</a>
+      <a href="/dashboard">Dashboard</a>
+    </nav>
+
+    <a class="btn ghost" href="/">Back</a>
+  </header>
+
+  <section class="section">
+    <div class="form-card">
+      <h2>Donor Registration</h2>
+      <p class="muted-text">Fill your details. We will predict your donation likelihood.</p>
+
+      <form class="form" method="POST" action="/register">
+        <div class="grid2">
+          <div>
+            <label>Full Name</label>
+            <input name="name" type="text" placeholder="Enter your name" required>
+          </div>
+
+          <div>
+            <label>Email</label>
+            <input name="email" type="email" placeholder="example@gmail.com" required>
+          </div>
+
+          <div>
+            <label>Phone</label>
+            <input name="phone" type="tel" placeholder="10-digit number" required>
+          </div>
+
+          <div>
+            <label>Blood Group</label>
+            <select name="blood_group" required>
+              <option value="">Select</option>
+              <option>A+</option><option>A-</option>
+              <option>B+</option><option>B-</option>
+              <option>O+</option><option>O-</option>
+              <option>AB+</option><option>AB-</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Recency (months since last donation)</label>
+            <input name="recency" type="number" min="0" placeholder="e.g., 4" required>
+          </div>
+
+          <div>
+            <label>Frequency (total donations)</label>
+            <input name="frequency" type="number" min="0" placeholder="e.g., 10" required>
+          </div>
+
+          <div>
+            <label>Monetary (total blood donated in cc)</label>
+            <input name="monetary" type="number" min="0" placeholder="e.g., 2500" required>
+            <small class="muted-text">Tip: Monetary ≈ Frequency × 250</small>
+          </div>
+
+          <div>
+            <label>Time (months since first donation)</label>
+            <input name="time" type="number" min="0" placeholder="e.g., 52" required>
+          </div>
+        </div>
+
+        <button class="btn primary full" type="submit">Submit & Predict</button>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>

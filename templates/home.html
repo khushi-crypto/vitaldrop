@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VitalDrop | Home</title>
+
+  <!-- FIXED: Flask correct static link -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=3">
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="brand">
+      <div class="logo">VD</div>
+      <div>
+        <div class="name">VitalDrop</div>
+        <div class="tag">Smart Donor Prediction • Faster Emergency Support</div>
+      </div>
+    </div>
+
+    <nav class="links">
+      <a class="active" href="/">Home</a>
+      <a href="/register">Register</a>
+      <a href="/dashboard">Dashboard</a>
+
+      <!-- NEW: Nearby Camps -->
+      <a href="/nearby-camps">Nearby Camps</a>
+
+      <a href="#how">How it works</a>
+      <a href="#impact">Impact</a>
+    </nav>
+
+    <a class="btn primary" href="/register">Become a Donor</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="pill">ML + Donor Behaviour Analysis</div>
+        <h1>Every drop matters.<br>Make donation smarter with <span>VitalDrop</span>.</h1>
+        <p>
+          VitalDrop analyses donor behaviour (recency, frequency, history) and predicts donation likelihood to help
+          maintain a stable blood supply and respond faster in emergencies.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="/register">Register as Donor</a>
+
+          <!-- NEW: Nearby Camps quick action -->
+          <a class="btn ghost" href="/nearby-camps">🚑 Find Nearby Camps</a>
+
+          <a class="btn ghost" href="#how">See how it works</a>
+        </div>
+
+        <div class="mini">
+          <div class="mini-card">
+            <div class="mini-title">Prediction</div>
+            <div class="mini-text">High / Medium / Low</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-title">Automation</div>
+            <div class="mini-text">Appreciation Email</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-title">Emergency</div>
+            <div class="mini-text">Camp Directory</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="mock">
+          <div class="mock-top">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="mock-body">
+            <h3>Quick Preview</h3>
+            <div class="row"><span>Recency</span><b>4 months</b></div>
+            <div class="row"><span>Frequency</span><b>2 / year</b></div>
+            <div class="result">
+              <small>Result</small>
+              <div class="big">High Donation Likelihood</div>
+            </div>
+            <button class="mock-btn" type="button">Send Appreciation Email</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="section">
+    <div class="section-head">
+      <h2>How VitalDrop Works</h2>
+      <p>Simple steps, strong output — easy to explain in viva.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">1</div>
+        <h3>Collect Donor Data</h3>
+        <p>Registration + donation history is stored securely in a database.</p>
+      </div>
+      <div class="card">
+        <div class="icon">2</div>
+        <h3>ML Prediction</h3>
+        <p>Model uses recency & frequency to predict donation likelihood.</p>
+      </div>
+      <div class="card">
+        <div class="icon">3</div>
+        <h3>Engage & Support</h3>
+        <p>Auto emails + camp directory help in emergency blood needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT GALLERY -->
+  <section id="impact" class="section alt">
+    <div class="section-head">
+      <h2>Impact Gallery</h2>
+      <p>Images are fixed size (no huge banner) and look clean.</p>
+    </div>
+
+    <div class="gallery">
+      <figure class="shot">
+        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80" alt="Donation" />
+        <figcaption>Donation drives & awareness</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=1200&q=80" alt="Hospital" />
+        <figcaption>Emergency hospital support</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1200&q=80" alt="Team" />
+        <figcaption>Healthcare coordination</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>© 2026 VitalDrop</div>
+    <div class="foot-note">Saving Lives Through Technology</div>
+  </footer>
+</body>
+</html>
